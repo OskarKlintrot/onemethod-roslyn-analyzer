@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OneMethod.Analyzer.CodeFixes\OneMethod.Analyzer.CodeFixes.csproj" />
     <ProjectReference Include="..\OneMethod.Analyzer\OneMethod.Analyzer.csproj" />
   </ItemGroup>
 

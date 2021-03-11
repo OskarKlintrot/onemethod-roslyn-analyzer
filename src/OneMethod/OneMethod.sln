@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMethod.Analyzer", "OneMethod.Analyzer\OneMethod.Analyzer\OneMethod.Analyzer.csproj", "{62A99458-695D-402A-8F95-F8283846C6D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMethod.Analyzer.CodeFixes", "OneMethod.Analyzer\OneMethod.Analyzer.CodeFixes\OneMethod.Analyzer.CodeFixes.csproj", "{1F9CA921-4EE6-4775-B61F-1AD2AA114E12}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMethod.Analyzer.Package", "OneMethod.Analyzer\OneMethod.Analyzer.Package\OneMethod.Analyzer.Package.csproj", "{2E2818A5-F157-444B-A4E9-2B2AC8640387}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMethod.Analyzer.Test", "OneMethod.Analyzer\OneMethod.Analyzer.Test\OneMethod.Analyzer.Test.csproj", "{50D71FB7-7177-403D-91B8-D9EE0E90F7E0}"
@@ -23,10 +21,6 @@ Global
 		{62A99458-695D-402A-8F95-F8283846C6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A99458-695D-402A-8F95-F8283846C6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A99458-695D-402A-8F95-F8283846C6D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F9CA921-4EE6-4775-B61F-1AD2AA114E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F9CA921-4EE6-4775-B61F-1AD2AA114E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F9CA921-4EE6-4775-B61F-1AD2AA114E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F9CA921-4EE6-4775-B61F-1AD2AA114E12}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E2818A5-F157-444B-A4E9-2B2AC8640387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E2818A5-F157-444B-A4E9-2B2AC8640387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E2818A5-F157-444B-A4E9-2B2AC8640387}.Release|Any CPU.ActiveCfg = Release|Any CPU
