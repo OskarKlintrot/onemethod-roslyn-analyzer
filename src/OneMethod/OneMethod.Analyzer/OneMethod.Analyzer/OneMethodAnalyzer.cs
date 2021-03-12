@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
@@ -47,16 +48,40 @@ namespace OneMethod.Analyzer
                     .OfType<MethodDeclarationSyntax>()
                     .ToList();
 
+                var testMethods = members
+                    .SelectMany(x => x.AttributeLists)
+                    .Select(y => y.Attributes.GetType().Namespace)
+                    .ToList();
+
                 var limit = node.Identifier.ValueText.Equals("program", StringComparison.OrdinalIgnoreCase)
                     && members.Count(x => x.Identifier.ValueText.Equals("main", StringComparison.OrdinalIgnoreCase)) > 0
                     ? 1
                     : 2;
 
+                var usings = new List<UsingDirectiveSyntax>();
+
+                if (node.Parent is NamespaceDeclarationSyntax @namespace)
+                {
+                    usings.AddRange(@namespace.Usings);
+                    if (@namespace.Parent is CompilationUnitSyntax compilation)
+                    {
+                        usings.AddRange(compilation.Usings);
+                    }
+                }
+
+                var isTestClass = usings
+                    .Select(x => x.Name.ToString())
+                    .Any(x =>
+                        x.StartsWith("xUnit", StringComparison.OrdinalIgnoreCase)
+                        || x.StartsWith("NUnit", StringComparison.OrdinalIgnoreCase)
+                        || x.StartsWith("Microsoft.VisualStudio.TestTools", StringComparison.OrdinalIgnoreCase));
+
                 var methodDeclarationSyntaxes = members
                     .Where(x => x.Modifiers.Any(y => keywords.Contains(y.ValueText)))
+                    .Where(x => !isTestClass || x.AttributeLists.Count == 0)
                     .ToList();
 
-                if (methodDeclarationSyntaxes.Count >= limit)
+                if (isTestClass && methodDeclarationSyntaxes.Count > 0 || methodDeclarationSyntaxes.Count >= limit)
                 {
                     var diagnostic = Diagnostic.Create(
                        Rule,
