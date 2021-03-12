@@ -48,17 +48,32 @@ namespace OneMethod.Analyzer
                     .ToList();
 
                 var limit = node.Identifier.ValueText.Equals("program", StringComparison.OrdinalIgnoreCase)
-                    && members.Count(x => x.Identifier.ValueText.Equals("main", StringComparison.OrdinalIgnoreCase))
-                    > 0 ? 1 : 2;
+                    && members.Count(x => x.Identifier.ValueText.Equals("main", StringComparison.OrdinalIgnoreCase)) > 0
+                    ? 1
+                    : 2;
 
-                if (members.Count(x => x.Modifiers.Any(y => keywords.Contains(y.ValueText))) >= limit)
+                var methodDeclarationSyntaxes = members
+                    .Where(x => x.Modifiers.Any(y => keywords.Contains(y.ValueText)))
+                    .ToList();
+
+                if (methodDeclarationSyntaxes.Count >= limit)
                 {
                     var diagnostic = Diagnostic.Create(
-                        Rule,
-                        node.Identifier.GetLocation(),
-                        node.Identifier.ValueText);
+                       Rule,
+                       node.Identifier.GetLocation(),
+                       node.Identifier.ValueText);
 
                     context.ReportDiagnostic(diagnostic);
+
+                    foreach (var item in methodDeclarationSyntaxes)
+                    {
+                        diagnostic = Diagnostic.Create(
+                        Rule,
+                        item.Identifier.GetLocation(),
+                        node.Identifier.ValueText);
+
+                        context.ReportDiagnostic(diagnostic);
+                    }
                 }
             }
         }

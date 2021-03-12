@@ -33,14 +33,17 @@ namespace OneMethod.Analyzer.Test
     {
         public class {|#0:TypeName|}
         {
-            public void Do(){ }
-            internal void DoInternal(){ }
+            public void {|#1:Do|}(){ }
+            internal void {|#2:DoInternal|}(){ }
             private void DoPrivate(){ }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(2).WithArguments("TypeName"));
         }
 
         [TestMethod]
@@ -58,13 +61,16 @@ namespace OneMethod.Analyzer.Test
     {
         public class {|#0:TypeName|}
         {
-            public void Do(){ }
-            public void Do2(){ }
+            public void {|#1:Do|}(){ }
+            public void {|#2:Do2|}(){ }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(2).WithArguments("TypeName"));
         }
 
         [TestMethod]
@@ -82,13 +88,16 @@ namespace OneMethod.Analyzer.Test
     {
         public class {|#0:TypeName|}
         {
-            internal void Do(){ }
-            internal void Do2(){ }
+            internal void {|#1:Do|}(){ }
+            internal void {|#2:Do2|}(){ }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(2).WithArguments("TypeName"));
         }
 
         [TestMethod]
@@ -106,13 +115,16 @@ namespace OneMethod.Analyzer.Test
     {
         internal class {|#0:TypeName|}
         {
-            public void Do(){ }
-            public void Do2(){ }
+            public void {|#1:Do|}(){ }
+            public void {|#2:Do2|}(){ }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(2).WithArguments("TypeName"));
         }
 
         [TestMethod]
@@ -130,13 +142,16 @@ namespace OneMethod.Analyzer.Test
     {
         public abstract class {|#0:TypeName|}
         {
-            public void Do(){ }
-            public void Do2(){ }
+            public void {|#1:Do|}(){ }
+            public void {|#2:Do2|}(){ }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(2).WithArguments("TypeName"));
         }
 
         [TestMethod]
@@ -177,13 +192,16 @@ namespace OneMethod.Analyzer.Test
     {
         public class {|#0:TypeName|}
         {
-            public static void Do(){ }
-            public static void Do2(){ }
+            public static void {|#1:Do|}(){ }
+            public static void {|#2:Do2|}(){ }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("TypeName"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(2).WithArguments("TypeName"));
         }
 
         [TestMethod]
@@ -201,15 +219,17 @@ namespace OneMethod.Analyzer.Test
                 Console.WriteLine(""Hello World!"");
             }
 
-            public void Test()
+            public void {|#1:Test|}()
             {
 
             }
         }
     }";
 
-            var expected = VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("Program");
-            await VerifyCS.VerifyAnalyzerAsync(test, expected);
+            await VerifyCS.VerifyAnalyzerAsync(
+                test,
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(0).WithArguments("Program"),
+                VerifyCS.Diagnostic(_diagnosticsId).WithLocation(1).WithArguments("Program"));
         }
 
         [TestMethod]
