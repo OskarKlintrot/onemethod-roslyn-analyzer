@@ -3,7 +3,7 @@
   <Metadata>
     <Identity Id="OneMethod.Analyzer.2216fa7c-5136-4397-9dd0-caa220c2b407" Version="1.0" Language="en-US" Publisher="oskar"/>
     <DisplayName>OneMethod</DisplayName>
-    <Description xml:space="preserve">This is a sample diagnostic extension for the .NET Compiler Platform ("Roslyn").</Description>
+    <Description xml:space="preserve">This analyzer will warn you if you use more than one public or internal method in a non-static class.</Description>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,)" />
