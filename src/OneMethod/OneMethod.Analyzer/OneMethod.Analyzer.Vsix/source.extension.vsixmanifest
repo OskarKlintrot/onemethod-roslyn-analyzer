@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
     <Identity Id="OneMethod.Analyzer.2216fa7c-5136-4397-9dd0-caa220c2b407" Version="1.0" Language="en-US" Publisher="oskar"/>
-    <DisplayName>OneMethod.Analyzer</DisplayName>
+    <DisplayName>OneMethod</DisplayName>
     <Description xml:space="preserve">This is a sample diagnostic extension for the .NET Compiler Platform ("Roslyn").</Description>
   </Metadata>
   <Installation>
